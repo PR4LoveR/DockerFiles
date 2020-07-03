@@ -1,21 +1,20 @@
 FROM node:12
 
-# Папка приложения
+# Application Folder
 ARG APP_DIR=pixelistic_backend
 RUN mkdir -p ${APP_DIR}
 WORKDIR ${APP_DIR}
 
-# Установка зависимостей
+# Dependency 
 COPY package*.json ./
-RUN npm install --production
-# Для использования в продакшне
+RUN npm install
 # RUN npm install --production
 
-# Копирование файлов проекта
+# Copy file
 COPY pixelistic-backend/ .
 
-# Уведомление о порте, который будет прослушивать работающее приложение
+# Exposed port
 EXPOSE 4000
 
-# Запуск проекта
+# Project start
 CMD ["npm", "start"]
